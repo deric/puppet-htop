@@ -1,0 +1,33 @@
+{
+  "name": "deric-htop",
+  "version": "0.1.0",
+  "author": "deric",
+  "summary": "Managing htop's configuration",
+  "license": "Apache-2.0",
+  "source": "https://github.com/deric/puppet-htop",
+  "project_page": "https://github.com/deric/puppet-htop",
+  "issues_url": "https://github.com/deric/puppet-htop/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ]
+}
