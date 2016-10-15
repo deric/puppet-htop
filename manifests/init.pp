@@ -14,9 +14,11 @@ class htop (
   $package_name = $::htop::params::package_name,
   $ensure       = $htop::params::ensure,
   $default_conf = $htop::params::default_conf,
+  $options      = {},
 ) inherits ::htop::params {
 
   # validate parameters here
+  validate_hash($options)
 
   class { '::htop::install':
     ensure => $ensure,
@@ -24,7 +26,9 @@ class htop (
   Class['::htop']
 
   if $default_conf {
-    htop::config { 'root': }
+    htop::config { 'root':
+      options => $options,
+    }
   }
 
 }

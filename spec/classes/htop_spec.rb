@@ -11,16 +11,34 @@ describe 'htop' do
         context "htop class without any parameters" do
           it { is_expected.to compile.with_all_deps }
 
+          it { is_expected.to contain_class('htop') }
           it { is_expected.to contain_class('htop::params') }
           it { is_expected.to contain_class('htop::install') }
 
           it { is_expected.to contain_package('htop').with_ensure('present') }
 
+          it { is_expected.to contain_file('/root/.config').with(
+            {
+              ensure: 'directory',
+            }
+          )}
+
+          it { is_expected.to contain_file('/root/.config/htop').with(
+            {
+              ensure: 'directory',
+            }
+          )}
+
           it { is_expected.to contain_file('/root/.config/htop/htoprc').with(
               {
                 ensure: 'file',
               }
-            )
+            ).with_content(/^# Managed/)
+          }
+
+          it { is_expected.to contain_file(
+            '/root/.config/htop/htoprc'
+            ).with_content(/^sort_key=46/)
           }
         end
       end
