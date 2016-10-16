@@ -1,24 +1,29 @@
 # Class: htop
 # ===========================
 #
-# Full description of class htop here.
+# Htop is an interactive process viewer for Unix
 #
 # Parameters
 # ----------
 #
-# * `sample parameter`
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# * `package_name`
+#   package name in distribution, usually `htop`
+#
+# * `ensure`
+#   puppeet will force this package version, possible values
+#   are `present`, `latest` or exact version like `2.0.2`
 #
 class htop (
   $package_name = $::htop::params::package_name,
   $ensure       = $htop::params::ensure,
   $default_conf = $htop::params::default_conf,
   $options      = {},
+  $defaults     = $htop::params::defaults,
 ) inherits ::htop::params {
 
   # validate parameters here
   validate_hash($options)
+  validate_hash($defaults)
 
   class { '::htop::install':
     ensure => $ensure,
@@ -27,7 +32,8 @@ class htop (
 
   if $default_conf {
     htop::config { 'root':
-      options => $options,
+      options  => $options,
+      defaults => $defaults,
     }
   }
 
