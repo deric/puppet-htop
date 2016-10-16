@@ -13,16 +13,18 @@
 #   puppeet will force this package version, possible values
 #   are `present`, `latest` or exact version like `2.0.2`
 #
+# * `manage_rc`
+#   Whether `htoprc` config file should be managed by Puppet at all.
+#
 class htop (
   $package_name = $::htop::params::package_name,
   $ensure       = $htop::params::ensure,
-  $default_conf = $htop::params::default_conf,
-  $options      = {},
+  $users        = $htop::params::users,
   $defaults     = $htop::params::defaults,
+  $manage_rc    = true,
 ) inherits ::htop::params {
 
   # validate parameters here
-  validate_hash($options)
   validate_hash($defaults)
 
   class { '::htop::install':
@@ -30,11 +32,7 @@ class htop (
   } ->
   Class['::htop']
 
-  if $default_conf {
-    htop::config { 'root':
-      options  => $options,
-      defaults => $defaults,
-    }
+  if $manage_rc {
+    create_resources(::htop::config, $users, $defaults)
   }
-
 }
