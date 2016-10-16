@@ -47,7 +47,7 @@ class htop::params {
       'left_meter_modes' => '1 1 1',
       'right_meters' => 'RightCPUs Tasks LoadAverage Uptime',
       'right_meter_modes' => '1 2 2 2',
-    }
+    },
   }
 
   $users = {
