@@ -4,5 +4,5 @@ FORGE
     puppetlabs-stdlib (4.13.1)
 
 DEPENDENCIES
-  puppetlabs-stdlib (>= 2.5.0)
+  puppetlabs-stdlib (< 5.0.0, >= 2.5.0)
 
