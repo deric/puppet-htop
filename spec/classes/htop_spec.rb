@@ -83,6 +83,24 @@ describe 'htop' do
             }).with_content(/^hide_threads=0/)
           }
         end
+
+        context 'update global defaults' do
+          let(:params) do
+            {
+              'config' => {
+                'defaults' => {
+                  'sort_key' => '47'
+                }
+              }
+            }
+          end
+
+          it { is_expected.to contain_file(
+            '/root/.config/htop/htoprc'
+            ).with_content(/^sort_key=47/)
+          }
+        end
+
       end
     end
   end

@@ -20,12 +20,14 @@ class htop (
   $package_name = $::htop::params::package_name,
   $ensure       = $htop::params::ensure,
   $users        = $htop::params::users,
-  $defaults     = $htop::params::defaults,
+  $config       = $htop::params::config,
   $manage_rc    = true,
 ) inherits ::htop::params {
 
   # validate parameters here
-  validate_hash($defaults)
+  validate_hash($config)
+  validate_hash($users)
+  validate_bool($manage_rc)
 
   class { '::htop::install':
     ensure => $ensure,
@@ -33,6 +35,6 @@ class htop (
   Class['::htop']
 
   if $manage_rc {
-    create_resources(::htop::config, $users, $defaults)
+    create_resources(::htop::config, $users, $config)
   }
 }

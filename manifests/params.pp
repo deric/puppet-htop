@@ -22,7 +22,7 @@ class htop::params {
   }
 
   # passed to each htop::config instance
-  $defaults = {
+  $config = {
     'defaults' => {
       'fields' => '0 48 17 18 38 39 40 2 46 47 49 1',
       'sort_key' => '46',
