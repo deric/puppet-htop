@@ -15,6 +15,7 @@ group :test do
     gem 'ruby_dep', '< 1.4.0'
   end
   gem 'listen', '< 3.0'
+  gem 'librarian-puppet' , '>=2.0'
 
   gem "puppet-lint-absolute_classname-check"
   gem "puppet-lint-leading_zero-check"
