@@ -52,3 +52,8 @@ Preferably using libarian or r10k:
 ```ruby
 mod 'deric-htop'
 ```
+
+## Requirements
+
+  * Puppet >= 3.3, Puppet 4
+  * Ruby 1.9.3 and newer
