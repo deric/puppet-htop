@@ -65,7 +65,7 @@ mod 'deric-htop'
 
 ## Requirements
 
-  * Puppet >= 3.3, Puppet 4
+  * Puppet >= 3.2, Puppet 4
   * Ruby 1.9.3 and newer
 
 ## Dependencies
