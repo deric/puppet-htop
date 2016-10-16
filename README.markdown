@@ -13,7 +13,17 @@ Basic definition will install `htop` package and create `/root/.config/htop/htop
 class{'::htop':}
 ```
 
-Accepts global settings (for multiple accounts) e.g. via Hiera:
+In most cases you probably want to override just some configuration
+```yaml
+---
+htop::users:
+  root:
+    options:
+      sort_key: '47' # memory
+      highlight_base_name: '1'
+```
+
+But you can also change global settings (applies to multiple accounts) e.g. via Hiera:
 ```yaml
 ---
 htop::config:
