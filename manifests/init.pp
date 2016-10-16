@@ -36,6 +36,8 @@ class htop (
 
   if $manage_rc {
     # require at least stdlib 2.5.0
-    ensure_resources('htop::config', $users, $config)
+    # ::htop::config will break some puppet versions
+    # string 'htop::config' won't work on ruby 1.9.3
+    ensure_resources(htop::config, $users, $config)
   }
 }
