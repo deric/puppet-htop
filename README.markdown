@@ -25,14 +25,13 @@ you can configure different options for each account:
 
 ```yaml
 ---
-htop::config:
-  users:
-    foo:
-      options:
-        hide_kernel_threads: '0'
-    bar:
-      options:
-        tree_view: '1'
+htop::users:
+  foo:
+    options:
+      hide_kernel_threads: '0'
+  bar:
+    options:
+      tree_view: '1'
 ```
 user `options` will be merged into global defauls (defined in `htop::config::defaults`).
 
@@ -50,6 +49,6 @@ class{'::htop':
 ## Installation
 
 Preferably using libarian or r10k:
-```
+```ruby
 mod 'deric-htop'
 ```
