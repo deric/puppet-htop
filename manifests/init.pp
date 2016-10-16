@@ -35,6 +35,7 @@ class htop (
   Class['::htop']
 
   if $manage_rc {
-    create_resources(::htop::config, $users, $config)
+    # require at least stdlib 2.5.0
+    ensure_resources('htop::config', $users, $config)
   }
 }

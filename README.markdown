@@ -57,3 +57,7 @@ mod 'deric-htop'
 
   * Puppet >= 3.3, Puppet 4
   * Ruby 1.9.3 and newer
+
+## Dependencies
+
+  * `puppetlabs-stdlib` - `>= 2.5.0`
