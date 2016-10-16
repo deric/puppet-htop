@@ -37,6 +37,9 @@ group :development do
   gem "travis-lint"
   gem "puppet-blacksmith"
   gem "guard-rake"
+  if RUBY_VERSION =~ /^1\.9\./ or RUBY_VERSION =~ /^1\.8\./
+    gem 'net-http-persistent', '< 3.0'
+  end
 end
 
 group :system_tests do
