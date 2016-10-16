@@ -1,6 +1,6 @@
 {
   "name": "deric-htop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "deric",
   "summary": "Managing htop's configuration",
   "license": "Apache-2.0",
