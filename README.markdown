@@ -1,5 +1,9 @@
 # puppet-htop
 
+[![Puppet
+Forge](http://img.shields.io/puppetforge/v/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop) [![Build Status](https://travis-ci.org/deric/puppet-htop.png)](https://travis-ci.org/deric/puppet-htop) [![Puppet Forge
+Downloads](http://img.shields.io/puppetforge/dt/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop/scores)
+
 Manages `htop` package and its configuration with Hiera support (optional).
 
 ## Usage
