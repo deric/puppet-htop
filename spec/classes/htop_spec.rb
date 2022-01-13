@@ -8,7 +8,7 @@ describe 'htop' do
           facts
         end
 
-        context "htop class without any parameters" do
+        context 'htop class without any parameters' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('htop') }
@@ -19,35 +19,41 @@ describe 'htop' do
 
           it { is_expected.to contain_htop__config('root') }
 
-          it { is_expected.to contain_file('/root/.config').with(
+          it {
+            is_expected.to contain_file('/root/.config').with(
             {
               ensure: 'directory',
-            }
-          )}
-
-          it { is_expected.to contain_file('/root/.config/htop').with(
-            {
-              ensure: 'directory',
-            }
-          )}
-
-          it { is_expected.to contain_file('/root/.config/htop/htoprc').with(
-              {
-                ensure: 'file',
-              }
-            ).with_content(/^# Managed/)
+            },
+          )
           }
 
-          it { is_expected.to contain_file(
-            '/root/.config/htop/htoprc'
-            ).with_content(/^sort_key=46/)
+          it {
+            is_expected.to contain_file('/root/.config/htop').with(
+            {
+              ensure: 'directory',
+            },
+          )
+          }
+
+          it {
+            is_expected.to contain_file('/root/.config/htop/htoprc').with(
+              {
+                ensure: 'file',
+              },
+            ).with_content(%r{^# Managed})
+          }
+
+          it {
+            is_expected.to contain_file(
+            '/root/.config/htop/htoprc',
+          ).with_content(%r{^sort_key=46})
           }
         end
 
         context 'manage configs for multiple users' do
           let(:params) do
             {
-              :users => {
+              users: {
                 'foo' => {
                   'options' => {
                     'hide_threads' => '1',
@@ -61,26 +67,29 @@ describe 'htop' do
               }
             }
           end
+
           it { is_expected.to contain_htop__config('foo') }
           it { is_expected.to contain_htop__config('bar') }
 
-          it { is_expected.to contain_file('/home/foo/.config').with({ensure: 'directory'})}
-          it { is_expected.to contain_file('/home/foo/.config/htop').with({ensure: 'directory'})}
-          it { is_expected.to contain_file('/home/bar/.config').with({ensure: 'directory'})}
-          it { is_expected.to contain_file('/home/bar/.config/htop').with({ensure: 'directory'})}
+          it { is_expected.to contain_file('/home/foo/.config').with({ ensure: 'directory' }) }
+          it { is_expected.to contain_file('/home/foo/.config/htop').with({ ensure: 'directory' }) }
+          it { is_expected.to contain_file('/home/bar/.config').with({ ensure: 'directory' }) }
+          it { is_expected.to contain_file('/home/bar/.config/htop').with({ ensure: 'directory' }) }
 
-          it { is_expected.to contain_file(
-            '/home/foo/.config/htop/htoprc'
-            ).with({
-              ensure: 'file'
-            }).with_content(/^hide_threads=1/)
+          it {
+            is_expected.to contain_file(
+            '/home/foo/.config/htop/htoprc',
+          ).with({
+                   ensure: 'file'
+                 }).with_content(%r{^hide_threads=1})
           }
 
-          it { is_expected.to contain_file(
-            '/home/bar/.config/htop/htoprc'
-            ).with({
-              ensure: 'file'
-            }).with_content(/^hide_threads=0/)
+          it {
+            is_expected.to contain_file(
+            '/home/bar/.config/htop/htoprc',
+          ).with({
+                   ensure: 'file'
+                 }).with_content(%r{^hide_threads=0})
           }
         end
 
@@ -95,12 +104,12 @@ describe 'htop' do
             }
           end
 
-          it { is_expected.to contain_file(
-            '/root/.config/htop/htoprc'
-            ).with_content(/^sort_key=47/)
+          it {
+            is_expected.to contain_file(
+            '/root/.config/htop/htoprc',
+          ).with_content(%r{^sort_key=47})
           }
         end
-
       end
     end
   end
@@ -109,12 +118,12 @@ describe 'htop' do
     describe 'htop class without any parameters on Solaris/Nexenta' do
       let(:facts) do
         {
-          :osfamily        => 'Solaris',
-          :operatingsystem => 'Nexenta',
+          osfamily: 'Solaris',
+          operatingsystem: 'Nexenta',
         }
       end
 
-      it { expect { is_expected.to contain_package('htop') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { is_expected.to contain_package('htop') }.to raise_error(Puppet::Error, %r{Nexenta not supported}) }
     end
   end
 end

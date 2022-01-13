@@ -30,9 +30,9 @@ class htop (
   validate_bool($manage_rc)
 
   class { '::htop::install':
-    ensure => $ensure,
-  } ->
-  Class['::htop']
+    ensure  => $ensure,
+    require => Class['::htop']
+  }
 
   if $manage_rc {
     # require at least stdlib 2.5.0
