@@ -17,17 +17,12 @@
 #   Whether `htoprc` config file should be managed by Puppet at all.
 #
 class htop (
-  $package_name = $::htop::params::package_name,
-  $ensure       = $htop::params::ensure,
-  $users        = $htop::params::users,
-  $config       = $htop::params::config,
-  $manage_rc    = true,
+  String  $package_name = $::htop::params::package_name,
+  String  $ensure       = $htop::params::ensure,
+  Hash    $users        = $htop::params::users,
+  Hash    $config       = $htop::params::config,
+  Boolean $manage_rc    = true,
 ) inherits ::htop::params {
-
-  # validate parameters here
-  validate_hash($config)
-  validate_hash($users)
-  validate_bool($manage_rc)
 
   class { '::htop::install':
     ensure  => $ensure,

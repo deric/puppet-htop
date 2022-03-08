@@ -1,6 +1,6 @@
 {
   "name": "deric-htop",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "deric",
   "summary": "Managing htop's configuration",
   "license": "Apache-2.0",
@@ -53,7 +53,7 @@
       "version_requirement": ">= 4.0.0 < 8.0.0"
     }
   ],
-  "pdk-version": "2.3.0",
-  "template-url": "pdk-default#2.3.0",
-  "template-ref": "tags/2.3.0-0-g8aaceff"
+  "pdk-version": "2.4.0",
+  "template-url": "pdk-default#2.4.0",
+  "template-ref": "tags/2.4.0-0-gfa6b6d2"
 }

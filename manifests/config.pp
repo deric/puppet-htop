@@ -2,10 +2,10 @@
 #
 #
 define htop::config (
-    $user     = $name,
-    $options  = {},
-    $replace  = $htop::params::replace,
-    $defaults = $htop::params::defaults,
+    String  $user     = $name,
+    Hash    $options  = {},
+    Boolean $replace  = $htop::params::replace,
+    Hash    $defaults = $htop::params::defaults,
   ) {
 
   if ! defined(Class['htop']) {
@@ -19,7 +19,7 @@ define htop::config (
     default => '/home/',
   }
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat', 'Debian': {
       file { [ "${homedir}${user}/.config", "${homedir}${user}/.config/htop", ]:
         ensure => directory,

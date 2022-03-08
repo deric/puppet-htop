@@ -3,7 +3,7 @@
 # This class is called from htop for install.
 #
 class htop::install(
-    $ensure,
+  String $ensure,
   ) {
 
   package { $::htop::package_name:
