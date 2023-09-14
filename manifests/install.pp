@@ -2,11 +2,10 @@
 #
 # This class is called from htop for install.
 #
-class htop::install(
+class htop::install (
   String $ensure,
-  ) {
-
-  package { $::htop::package_name:
+) {
+  package { $htop::package_name:
     ensure => $ensure,
   }
 }

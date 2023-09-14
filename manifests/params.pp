@@ -4,12 +4,11 @@
 # It sets variables according to platform.
 #
 class htop::params {
-
   $ensure       = present
   $default_conf = true
   $replace      = true
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian': {
       $package_name = 'htop'
     }
@@ -17,7 +16,7 @@ class htop::params {
       $package_name = 'htop'
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail("OS not supported")
     }
   }
 
@@ -53,6 +52,4 @@ class htop::params {
   $users = {
     'root' => {},
   }
-
-
 }

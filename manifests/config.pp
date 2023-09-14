@@ -2,12 +2,11 @@
 #
 #
 define htop::config (
-    String  $user     = $name,
-    Hash    $options  = {},
-    Boolean $replace  = $htop::params::replace,
-    Hash    $defaults = $htop::params::defaults,
-  ) {
-
+  String  $user     = $name,
+  Hash    $options  = {},
+  Boolean $replace  = $htop::params::replace,
+  Hash    $defaults = $htop::params::defaults,
+) {
   if ! defined(Class['htop']) {
     fail('You must include the htop base class before using any htop defined resources')
   }
@@ -21,7 +20,7 @@ define htop::config (
 
   case $facts['os']['family'] {
     'RedHat', 'Debian': {
-      file { [ "${homedir}${user}/.config", "${homedir}${user}/.config/htop", ]:
+      file { ["${homedir}${user}/.config", "${homedir}${user}/.config/htop",]:
         ensure => directory,
         owner  => $user,
         group  => $user,
