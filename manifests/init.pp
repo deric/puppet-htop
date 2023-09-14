@@ -1,7 +1,4 @@
-# Class: htop
-# ===========================
-#
-# Htop is an interactive process viewer for Unix
+# @summary Htop is an interactive process viewer for Unix
 #
 # Parameters
 # ----------
@@ -24,8 +21,8 @@ class htop (
   String  $ensure,
   Boolean $replace,
   Boolean $manage_rc,
-  Hash    $users = {},
-  Hash    $config = {},
+  Hash    $users,
+  Hash    $config,
 ) {
   contain htop::install
 
