@@ -20,17 +20,17 @@ describe 'htop::config' do
 
     it {
       is_expected.to contain_file('/home/john/.config')
-        .with( ensure: 'directory')
+        .with(ensure: 'directory')
     }
 
     it {
       is_expected.to contain_file('/home/john/.config/htop')
-        .with( ensure: 'directory')
+        .with(ensure: 'directory')
     }
 
     it {
       is_expected.to contain_file('/home/john/.config/htop/htoprc')
-        .with( ensure: 'file')
+        .with(ensure: 'file')
     }
   end
 end
