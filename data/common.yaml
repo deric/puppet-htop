@@ -31,3 +31,4 @@ htop::config:
     right_meter_modes: '1 2 2 2'
 htop::users:
   root:
+    user: root
