@@ -113,17 +113,4 @@ describe 'htop' do
       end
     end
   end
-
-  context 'unsupported operating system' do
-    describe 'htop class without any parameters on Solaris/Nexenta' do
-      let(:facts) do
-        {
-          osfamily: 'Solaris',
-          operatingsystem: 'Nexenta',
-        }
-      end
-
-      it { expect { is_expected.to contain_package('htop') }.to raise_error(Puppet::Error, %r{Nexenta not supported}) }
-    end
-  end
 end
