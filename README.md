@@ -1,7 +1,7 @@
 # puppet-htop
 
 [![Puppet
-Forge](http://img.shields.io/puppetforge/v/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop) [![Build Status](https://travis-ci.org/deric/puppet-htop.png)](https://travis-ci.org/deric/puppet-htop) [![Puppet Forge
+Forge](http://img.shields.io/puppetforge/v/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop) [![Tests](https://github.com/deric/puppet-htop/actions/workflows/tests.yaml/badge.svg)](https://github.com/deric/puppet-htop/actions/workflows/tests.yaml) [![Puppet Forge
 Downloads](http://img.shields.io/puppetforge/dt/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop/scores)
 
 Manages `htop` package and its configuration with Hiera support (optional).
