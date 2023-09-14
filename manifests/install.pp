@@ -1,9 +1,10 @@
 # == Class htop::install
 #
-# This class is called from htop for install.
+# @param ensure
+#   package ensure
 #
 class htop::install (
-  String $ensure,
+  String $ensure = $htop::ensure,
 ) {
   package { $htop::package_name:
     ensure => $ensure,

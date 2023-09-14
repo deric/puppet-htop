@@ -6,32 +6,31 @@
 # Parameters
 # ----------
 #
-# * `package_name`
+# @param package_name
 #   package name in distribution, usually `htop`
 #
-# * `ensure`
+# @param ensure
 #   puppeet will force this package version, possible values
 #   are `present`, `latest` or exact version like `2.0.2`
 #
-# * `manage_rc`
+# @param manage_rc
 #   Whether `htoprc` config file should be managed by Puppet at all.
+# @param config
+# @param users
 #
 class htop (
-  String  $package_name = $htop::params::package_name,
-  String  $ensure       = $htop::params::ensure,
-  Hash    $users        = $htop::params::users,
-  Hash    $config       = $htop::params::config,
+  String  $package_name,
+  String  $ensure,
+  Hash    $users = {},
+  Hash    $config = {},
   Boolean $manage_rc    = true,
-) inherits htop::params {
-  class { 'htop::install':
-    ensure  => $ensure,
-    require => Class['htop'],
-  }
+) {
+  contain htop::install
 
   if $manage_rc {
     # require at least stdlib 2.5.0
     # ::htop::config will break some puppet versions
     # `create_resources` works on ruby 1.9.3 but not `ensure_resources`
-    create_resources(htop::config, $users, $config)
+    create_resources('htop::config', $users, $config)
   }
 }
