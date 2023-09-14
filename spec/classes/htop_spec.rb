@@ -12,7 +12,6 @@ describe 'htop' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('htop') }
-          it { is_expected.to contain_class('htop::params') }
           it { is_expected.to contain_class('htop::install') }
 
           it { is_expected.to contain_package('htop').with_ensure('present') }

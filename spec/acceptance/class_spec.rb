@@ -16,10 +16,5 @@ describe 'htop class' do
     describe package('htop') do
       it { is_expected.to be_installed }
     end
-
-    describe service('htop') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
-    end
   end
 end

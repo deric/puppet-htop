@@ -1,11 +1,15 @@
 # == Define htop::config
 #
+# @param user
+# @param options
+# @param replace
+# @param defaults
 #
 define htop::config (
   String  $user     = $name,
   Hash    $options  = {},
-  Boolean $replace  = $htop::params::replace,
-  Hash    $defaults = $htop::params::defaults,
+  Boolean $replace  = $htop::replace,
+  Hash    $defaults = $htop::defaults,
 ) {
   if ! defined(Class['htop']) {
     fail('You must include the htop base class before using any htop defined resources')
