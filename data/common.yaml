@@ -3,6 +3,7 @@ htop::package_name: htop
 htop::ensure: present
 htop::default_conf: true
 htop::replace: true
+htop::manage_rc: true
 htop::config:
   defaults:
     fields: '0 48 17 18 38 39 40 2 46 47 49 1'

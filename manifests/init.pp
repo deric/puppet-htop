@@ -15,22 +15,21 @@
 #
 # @param manage_rc
 #   Whether `htoprc` config file should be managed by Puppet at all.
+# @param replace
 # @param config
 # @param users
 #
 class htop (
   String  $package_name,
   String  $ensure,
+  Boolean $replace,
+  Boolean $manage_rc,
   Hash    $users = {},
   Hash    $config = {},
-  Boolean $manage_rc    = true,
 ) {
   contain htop::install
 
   if $manage_rc {
-    # require at least stdlib 2.5.0
-    # ::htop::config will break some puppet versions
-    # `create_resources` works on ruby 1.9.3 but not `ensure_resources`
-    create_resources('htop::config', $users, $config)
+    create_resources(htop::config, $users, $config)
   }
 }
