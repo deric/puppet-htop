@@ -88,4 +88,34 @@ describe 'htop' do
 
     it { is_expected.not_to contain_package('htop').with_ensure(%r{present|installed}) }
   end
+
+  context 'with htop 3 screens' do
+    let(:params) do
+      {
+        users: {
+          john: {
+            options: {
+              config_reader_min_version: 3
+            },
+            screens: [
+              {
+                name: 'Main',
+                header: 'PID USER PRIORITY NICE M_VIRT M_RESIDENT M_SHARE STATE PERCENT_CPU PERCENT_MEM TIME Command',
+                config: {
+                  sort_key: 'PERCENT_CPU'
+                },
+              },
+            ],
+          },
+        }
+      }
+    end
+
+    it {
+      is_expected.to contain_file('/home/john/.config/htop/htoprc')
+        .with_ensure('file')
+        .with_content(%r{^\.sort_key=PERCENT_CPU})
+        .with_content(%r{^screen:Main})
+    }
+  end
 end

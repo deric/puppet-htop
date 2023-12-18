@@ -16,6 +16,8 @@
 ### Data types
 
 * [`Htop::Conf`](#Htop--Conf): Single user config
+* [`Htop::Screen`](#Htop--Screen): Screen
+* [`Htop::Screens`](#Htop--Screens): Screens (tabs) definition
 * [`Htop::Users`](#Htop--Users): Configuration for multiple users
 
 ## Classes
@@ -122,12 +124,13 @@ The following parameters are available in the `htop::config` defined type:
 * [`options`](#-htop--config--options)
 * [`replace`](#-htop--config--replace)
 * [`defaults`](#-htop--config--defaults)
+* [`screens`](#-htop--config--screens)
 
 ##### <a name="-htop--config--options"></a>`options`
 
 Data type: `Htop::Conf`
 
-
+Hash containing key-value pairs
 
 Default value: `{}`
 
@@ -145,9 +148,17 @@ Default value: `$htop::replace`
 
 Data type: `Htop::Conf`
 
-
+Will be overwritten by `options` hash, can be used to provide system-wide defaults
 
 Default value: `$htop::defaults`
+
+##### <a name="-htop--config--screens"></a>`screens`
+
+Data type: `Htop::Screens`
+
+Starting from htop 3.x it's possible to define custom screens
+
+Default value: `undef`
 
 ## Data types
 
@@ -156,6 +167,26 @@ Default value: `$htop::defaults`
 Single user config
 
 Alias of `Hash[String[1], Variant[String,Integer,Boolean]]`
+
+### <a name="Htop--Screen"></a>`Htop::Screen`
+
+Screen
+
+Alias of
+
+```puppet
+Struct[{
+  name             => String[1],
+  header           => String[1],
+  Optional[config] => Htop::Conf,
+}]
+```
+
+### <a name="Htop--Screens"></a>`Htop::Screens`
+
+Screens (tabs) definition
+
+Alias of `Optional[Array[Htop::Screen]]`
 
 ### <a name="Htop--Users"></a>`Htop::Users`
 
@@ -168,6 +199,7 @@ Hash[String[1], Struct[{
     Optional[options]  => Htop::Conf,
     Optional[replace]  => Boolean,
     Optional[defaults] => Htop::Conf,
+    Optional[screens] => Htop::Screens,
   }]]
 ```
 

@@ -1,5 +1,17 @@
-<%- | Hash $config | -%>
+<%- | Htop::Conf $config,
+  Htop::Screens $screens,
+ | -%>
 # Managed by Puppet.
 <% $config.each |$k,$v| { -%>
 <%= $k %>=<%= $v %>
+<% } -%>
+<% if $screens { -%>
+  <%- $screens.each |$screen| { -%>
+screen:<%= $screen['name'] %>=<%= $screen['header'] %>
+    <%- if 'config' in $screen { -%>
+      <%- $screen['config'].each |$k,$v| { -%>
+.<%= $k %>=<%= $v %>
+      <%- } -%>
+    <%- } -%>
+  <%- } -%>
 <% } -%>

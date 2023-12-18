@@ -13,6 +13,21 @@ Basic definition will install `htop` package and create `/root/.config/htop/htop
 include htop
 ```
 
+Since htop 3, you can configure screens:
+
+```yaml
+htop::users:
+  john:
+    options:
+      config_reader_min_version: 3
+    screens:
+      - name: 'Main'
+        header: 'PID USER PRIORITY NICE M_VIRT M_RESIDENT M_SHARE STATE PERCENT_CPU PERCENT_MEM TIME Command'
+        config:
+          sort_key: PERCENT_MEM
+```
+note, the config should include `config_reader_min_version=3`.
+
 In most cases you probably want to override just some configuration
 ```yaml
 htop::users:

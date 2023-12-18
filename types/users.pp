@@ -5,5 +5,6 @@ type Htop::Users = Hash[
     Optional[options]  => Htop::Conf,
     Optional[replace]  => Boolean,
     Optional[defaults] => Htop::Conf,
+    Optional[screens] => Htop::Screens,
   }],
 ]
