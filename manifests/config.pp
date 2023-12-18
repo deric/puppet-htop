@@ -37,7 +37,9 @@ define htop::config (
         group   => $user,
         mode    => '0644',
         replace => $replace,
-        content => template('htop/htoprc.erb'),
+        content => epp("${module_name}/htoprc.epp", {
+            'config' => $config,
+        }),
       }
     }
     default: {
@@ -47,7 +49,9 @@ define htop::config (
         group   => $user,
         mode    => '0644',
         replace => $replace,
-        content => template('htop/htoprc.erb'),
+        content => epp("${module_name}/htoprc.epp", {
+            'config' => $config,
+        }),
       }
     }
   }

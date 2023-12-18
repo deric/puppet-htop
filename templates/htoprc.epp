@@ -1,0 +1,5 @@
+<%- | Hash $config | -%>
+# Managed by Puppet.
+<% $config.each |$k,$v| { -%>
+<%= $k %>=<%= $v %>
+<% } -%>
