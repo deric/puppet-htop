@@ -1,4 +1,4 @@
-# == Class htop::install
+# @summary Binary package installation
 #
 # @param ensure
 #   package ensure

@@ -1,8 +1,5 @@
 # @summary Htop is an interactive process viewer for Unix
 #
-# Parameters
-# ----------
-#
 # @param package_name
 #   package name in distribution, usually `htop`
 #

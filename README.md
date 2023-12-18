@@ -10,7 +10,7 @@ Manages `htop` package and its configuration with Hiera support (optional).
 
 Basic definition will install `htop` package and create `/root/.config/htop/htoprc` file:
 ```puppet
-class{'::htop':}
+include htop
 ```
 
 In most cases you probably want to override just some configuration
@@ -47,7 +47,7 @@ user `options` will be merged into global defauls (defined in `htop::config::def
 
 or directly via puppet code:
 ```puppet
-class{'::htop':
+class{'htop':
   config => {
     defaults => {
       sort_key => '46',
@@ -55,6 +55,7 @@ class{'::htop':
   }
 }
 ```
+All Puppet variables are documented in [REFERENCE.md](./REFERENCE.md).
 
 ## Installation
 
@@ -65,8 +66,8 @@ mod 'deric-htop'
 
 ## Requirements
 
-  * Puppet >= 3.2, Puppet 4
-  * Ruby 1.9.3 and newer
+  * Puppet >= 7
+  * Ruby 2.7 and newer
 
 ## Dependencies
 

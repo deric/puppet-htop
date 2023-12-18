@@ -1,4 +1,4 @@
-# == Define htop::config
+# @summary Htop configuration files
 #
 # @param user
 # @param options
