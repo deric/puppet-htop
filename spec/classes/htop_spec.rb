@@ -10,7 +10,7 @@ describe 'htop' do
     it { is_expected.to contain_class('htop') }
     it { is_expected.to contain_class('htop::install') }
 
-    it { is_expected.to contain_package('htop').with_ensure('present') }
+    it { is_expected.to contain_package('htop').with_ensure(%r{present|installed}) }
 
     it { is_expected.to contain_htop__config('root') }
 

@@ -6,7 +6,5 @@
 class htop::install (
   String $ensure = $htop::ensure,
 ) {
-  package { $htop::package_name:
-    ensure => $ensure,
-  }
+  ensure_packages([$htop::package_name], { 'ensure' => $ensure })
 }
