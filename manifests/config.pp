@@ -1,20 +1,21 @@
 # @summary Htop configuration files
 #
-# @param user
 # @param options
 # @param replace
+#   Whether to replace a file or symlink that already exists on the local system
+#   but whose content doesn't match what the source or content attribute specifies.
+#   Default: true
 # @param defaults
 #
 define htop::config (
-  String  $user     = $name,
-  Hash    $options  = {},
-  Boolean $replace  = $htop::replace,
-  Hash    $defaults = $htop::defaults,
+  Htop::Conf $options  = {},
+  Boolean    $replace  = $htop::replace,
+  Htop::Conf $defaults = $htop::defaults,
 ) {
   if ! defined(Class['htop']) {
     fail('You must include the htop base class before using any htop defined resources')
   }
-
+  $user = $title
   $config = merge($defaults, $options)
 
   $homedir = $user ? {

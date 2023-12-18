@@ -29,15 +29,15 @@ describe 'htop' do
     let(:params) do
       {
         users: {
-          'foo' => {
-            'options' => {
-              'hide_threads' => '1',
-            }
+          foo: {
+            options: {
+              hide_threads: '1',
+            },
           },
-          'bar' => {
-            'options' => {
-              'hide_threads' => '0',
-            }
+          bar: {
+            options: {
+              hide_threads: 0,
+            },
           },
         }
       }
@@ -69,10 +69,8 @@ describe 'htop' do
   context 'update global defaults' do
     let(:params) do
       {
-        'config' => {
-          'defaults' => {
-            'sort_key' => '47'
-          }
+        defaults: {
+          sort_key: '47',
         }
       }
     end

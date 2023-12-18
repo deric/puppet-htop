@@ -4,13 +4,11 @@ htop::ensure: installed
 htop::default_conf: true
 htop::replace: true
 htop::manage_rc: true
-htop::config:
-  defaults: {}
+htop::defaults: {}
 htop::users:
-  root:
-    user: root
+  root: {}
 lookup_options:
-  htop::config:
+  htop::defaults:
     merge: deep
   htop::users:
     merge: deep
