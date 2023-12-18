@@ -41,6 +41,7 @@ The following parameters are available in the `htop` class:
 * [`package_name`](#-htop--package_name)
 * [`ensure`](#-htop--ensure)
 * [`manage_rc`](#-htop--manage_rc)
+* [`manage_package`](#-htop--manage_package)
 * [`replace`](#-htop--replace)
 * [`defaults`](#-htop--defaults)
 * [`users`](#-htop--users)
@@ -63,6 +64,12 @@ are `present`, `latest` or exact version like `2.0.2`
 Data type: `Boolean`
 
 Whether `htoprc` config file should be managed by Puppet at all.
+
+##### <a name="-htop--manage_package"></a>`manage_package`
+
+Data type: `Boolean`
+
+Whether package should be managed by this module
 
 ##### <a name="-htop--replace"></a>`replace`
 

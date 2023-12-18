@@ -9,6 +9,8 @@
 #
 # @param manage_rc
 #   Whether `htoprc` config file should be managed by Puppet at all.
+# @param manage_package
+#   Whether package should be managed by this module
 # @param replace
 #   Whether to replace a file or symlink that already exists on the local system
 #   but whose content doesn't match what the source or content attribute specifies.
@@ -28,6 +30,7 @@ class htop (
   String      $ensure,
   Boolean     $replace,
   Boolean     $manage_rc,
+  Boolean     $manage_package,
   Htop::Users $users,
   Htop::Conf  $defaults,
 ) {

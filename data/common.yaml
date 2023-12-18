@@ -4,6 +4,7 @@ htop::ensure: installed
 htop::default_conf: true
 htop::replace: true
 htop::manage_rc: true
+htop::manage_package: true
 htop::defaults: {}
 htop::users:
   root: {}

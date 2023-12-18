@@ -11,11 +11,8 @@ describe 'htop' do
     it { is_expected.to contain_class('htop::install') }
 
     it { is_expected.to contain_package('htop').with_ensure(%r{present|installed}) }
-
     it { is_expected.to contain_htop__config('root') }
-
     it { is_expected.to contain_file('/root/.config').with_ensure('directory') }
-
     it { is_expected.to contain_file('/root/.config/htop').with_ensure('directory') }
 
     it {
@@ -80,5 +77,15 @@ describe 'htop' do
       '/root/.config/htop/htoprc',
     ).with_content(%r{^sort_key=47})
     }
+  end
+
+  context 'without managed package' do
+    let(:params) do
+      {
+        manage_package: false,
+      }
+    end
+
+    it { is_expected.not_to contain_package('htop').with_ensure(%r{present|installed}) }
   end
 end
