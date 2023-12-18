@@ -15,43 +15,37 @@ include htop
 
 In most cases you probably want to override just some configuration
 ```yaml
----
 htop::users:
   root:
     options:
-      sort_key: '47' # memory
-      highlight_base_name: '1'
+      sort_key: 47 # memory
+      highlight_base_name: 1
 ```
 
 But you can also change global settings (applies to multiple accounts) e.g. via Hiera:
 ```yaml
----
-htop::config:
-  defaults:
-    sort_key: '47' # sort by memory
-    highlight_base_name: '1'
+htop::defaults:
+  sort_key: 47 # sort by memory
+  highlight_base_name: 1
 ```
 you can configure different options for each account:
 
 ```yaml
----
 htop::users:
   foo:
     options:
-      hide_kernel_threads: '0'
+      hide_kernel_threads: 0
   bar:
     options:
-      tree_view: '1'
+      tree_view: 1
 ```
 user `options` will be merged into global defauls (defined in `htop::config::defaults`).
 
 or directly via puppet code:
 ```puppet
 class{'htop':
-  config => {
-    defaults => {
-      sort_key => '46',
-    }
+  defaults => {
+    sort_key => 46,
   }
 }
 ```

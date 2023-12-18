@@ -13,11 +13,26 @@
 
 * [`htop::config`](#htop--config): Htop configuration files
 
+### Data types
+
+* [`Htop::Conf`](#Htop--Conf): Single user config
+* [`Htop::Users`](#Htop--Users): Configuration for multiple users
+
 ## Classes
 
 ### <a name="htop"></a>`htop`
 
 Htop is an interactive process viewer for Unix
+
+#### Examples
+
+##### 
+
+```puppet
+htop::users:
+  john:
+    sort_key: 47
+```
 
 #### Parameters
 
@@ -27,7 +42,7 @@ The following parameters are available in the `htop` class:
 * [`ensure`](#-htop--ensure)
 * [`manage_rc`](#-htop--manage_rc)
 * [`replace`](#-htop--replace)
-* [`config`](#-htop--config)
+* [`defaults`](#-htop--defaults)
 * [`users`](#-htop--users)
 
 ##### <a name="-htop--package_name"></a>`package_name`
@@ -53,19 +68,21 @@ Whether `htoprc` config file should be managed by Puppet at all.
 
 Data type: `Boolean`
 
+Whether to replace a file or symlink that already exists on the local system
+but whose content doesn't match what the source or content attribute specifies.
+Default: true
 
+##### <a name="-htop--defaults"></a>`defaults`
 
-##### <a name="-htop--config"></a>`config`
+Data type: `Htop::Conf`
 
-Data type: `Hash`
-
-
+Default configuration for multiple users
 
 ##### <a name="-htop--users"></a>`users`
 
-Data type: `Hash`
+Data type: `Htop::Users`
 
-
+Configuration for multiple users
 
 ### <a name="htop--install"></a>`htop::install`
 
@@ -95,22 +112,13 @@ Htop configuration files
 
 The following parameters are available in the `htop::config` defined type:
 
-* [`user`](#-htop--config--user)
 * [`options`](#-htop--config--options)
 * [`replace`](#-htop--config--replace)
 * [`defaults`](#-htop--config--defaults)
 
-##### <a name="-htop--config--user"></a>`user`
-
-Data type: `String`
-
-
-
-Default value: `$name`
-
 ##### <a name="-htop--config--options"></a>`options`
 
-Data type: `Hash`
+Data type: `Htop::Conf`
 
 
 
@@ -120,15 +128,39 @@ Default value: `{}`
 
 Data type: `Boolean`
 
-
+Whether to replace a file or symlink that already exists on the local system
+but whose content doesn't match what the source or content attribute specifies.
+Default: true
 
 Default value: `$htop::replace`
 
 ##### <a name="-htop--config--defaults"></a>`defaults`
 
-Data type: `Hash`
+Data type: `Htop::Conf`
 
 
 
 Default value: `$htop::defaults`
+
+## Data types
+
+### <a name="Htop--Conf"></a>`Htop::Conf`
+
+Single user config
+
+Alias of `Hash[String[1], Variant[String,Integer,Boolean]]`
+
+### <a name="Htop--Users"></a>`Htop::Users`
+
+Configuration for multiple users
+
+Alias of
+
+```puppet
+Hash[String[1], Struct[{
+    Optional[options]  => Htop::Conf,
+    Optional[replace]  => Boolean,
+    Optional[defaults] => Htop::Conf,
+  }]]
+```
 
