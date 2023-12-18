@@ -4,7 +4,7 @@
 Forge](http://img.shields.io/puppetforge/v/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop) [![Tests](https://github.com/deric/puppet-htop/actions/workflows/tests.yaml/badge.svg)](https://github.com/deric/puppet-htop/actions/workflows/tests.yaml) [![Puppet Forge
 Downloads](http://img.shields.io/puppetforge/dt/deric/htop.svg)](https://forge.puppetlabs.com/deric/htop/scores)
 
-Manages `htop` package and its configuration with Hiera support (optional).
+Manages [htop](https://github.com/htop-dev/htop) package and its configuration with Hiera support (optional).
 
 ## Usage
 
