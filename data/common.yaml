@@ -1,6 +1,6 @@
 ---
 htop::package_name: htop
-htop::ensure: present
+htop::ensure: installed
 htop::default_conf: true
 htop::replace: true
 htop::manage_rc: true
@@ -9,3 +9,8 @@ htop::config:
 htop::users:
   root:
     user: root
+lookup_options:
+  htop::config:
+    merge: deep
+  htop::users:
+    merge: deep
