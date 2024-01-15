@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## Release 1.0.2 [2024-01-15]
+
+**Bugfixes**
+- Avoid corrective changes on Debian 10
+
 ## Release 1.0.1 [2024-01-15]
 
 **Bugfixes**
