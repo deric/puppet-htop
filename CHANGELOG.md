@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## Release 1.0.1 [2024-01-15]
+
+**Bugfixes**
+- Fixed typo in `htop::defaults`
+
 ## Release 1.0.0 [2023-12-18]
 
 - Support `htop` 3.x screens
