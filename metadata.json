@@ -1,6 +1,6 @@
 {
   "name": "deric-htop",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "deric",
   "summary": "Managing htop's configuration",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 2.5.0 < 10.0.0"
+      "version_requirement": ">= 9.0.0 < 10.0.0"
     }
   ],
   "operatingsystem_support": [

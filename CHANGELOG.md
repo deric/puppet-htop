@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## Release 2.0.0 [2024-06-21]
+
+- **BC** use `stdlib::` prefix for puppet 4.x functions
+- stdlib >= 9 is required
+
 ## Release 1.0.2 [2024-01-15]
 
 **Bugfixes**
