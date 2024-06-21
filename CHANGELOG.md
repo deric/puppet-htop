@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 2.0.01 [2024-06-21]
+
+- Avoid using `stdlib::merge` function
+- Puppet 8 compatible
 
 ## Release 2.0.0 [2024-06-21]
 

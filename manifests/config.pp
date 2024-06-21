@@ -21,7 +21,7 @@ define htop::config (
     fail('You must include the htop base class before using any htop defined resources')
   }
   $user = $title
-  $config = merge($defaults, $options)
+  $config = $defaults + $options
 
   $homedir = $user ? {
     /root/  => '/',
